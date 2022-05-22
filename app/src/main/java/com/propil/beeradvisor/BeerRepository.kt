@@ -5,13 +5,11 @@ import androidx.room.Room
 import com.propil.beeradvisor.database.BeerDatabase
 import java.lang.IllegalStateException
 
-private const val DATABASE_NAME = "Beer Database"
-
 class BeerRepository private constructor(context: Context){
 
     //for storing links from BeerDatabase and objects from BeerDao
     private val database: BeerDatabase =
-        Room.databaseBuilder(context.applicationContext, BeerDatabase::class.java, DATABASE_NAME).build()
+        Room.databaseBuilder(context.applicationContext, BeerDatabase::class.java, com.propil.beeradvisor.utils.DATABASE_NAME).build()
 
     private val beerDao = database.beerDao()
 
