@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="32dp"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/beer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BEER NAME"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="58dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/beer_image"
+            android:layout_width="match_parent"
+            android:layout_height="332dp"
+            android:src="@drawable/wine_bottle"
+            android:padding="8dp"
+            android:scaleType="fitCenter"/>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:minWidth="94dp"
+            android:minHeight="24dp"
+            android:layout_height="wrap_content"
+            android:text="@string/beer_kind"
+            android:textAlignment="center"
+            app:chipBackgroundColor="@color/coral"
+            android:textColor="@color/white"
+            app:chipCornerRadius="5dp"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/beer_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/magic_spell"
+            android:background="#D9D9D9"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_gravity="bottom"/>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

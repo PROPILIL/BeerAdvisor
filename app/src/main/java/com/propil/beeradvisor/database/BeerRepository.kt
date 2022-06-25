@@ -1,8 +1,7 @@
-package com.propil.beeradvisor
+package com.propil.beeradvisor.database
 
 import android.content.Context
 import androidx.room.Room
-import com.propil.beeradvisor.database.BeerDatabase
 import java.lang.IllegalStateException
 
 class BeerRepository private constructor(context: Context){

@@ -2,7 +2,6 @@ package com.propil.beeradvisor.database
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.propil.beeradvisor.BeerModel
 
 @Dao
 interface BeerDao {
