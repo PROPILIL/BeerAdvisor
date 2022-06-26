@@ -42,8 +42,7 @@ class BeerListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        inflater.inflate(R.layout.fragment_beer_list, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_beer_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
