@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,16 +19,11 @@ class BeerListFragment: Fragment() {
 
     private lateinit var beerRecyclerView: RecyclerView
     private lateinit var beerModel: BeerModel
-    private var adapter: BeerAdapter? = null
+    private var adapter: BeerAdapter? = BeerAdapter(emptyList())
 
 
     private val beerListViewModel: BeerViewModel by lazy{
         ViewModelProvider(this)[BeerViewModel::class.java]
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d(TAG, "Total beers: ${beerListViewModel.beerListLiveData}")
     }
 
     override fun onCreateView(
@@ -42,14 +36,21 @@ class BeerListFragment: Fragment() {
         beerRecyclerView = view?.findViewById(R.id.beer_recycler_view) as RecyclerView
         beerRecyclerView.layoutManager = GridLayoutManager(context, 2)
 
-        updateUI()
-
         return view
     }
 
-    private fun updateUI(){
-        val allBeers = beerListViewModel.beerListLiveData
-        adapter = BeerAdapter(allBeers)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        beerListViewModel.beerListLiveData.observe(viewLifecycleOwner) { beerModel ->
+            beerModel?.let {
+                Log.i(TAG, "Got beers ${beerModel.size}")
+                updateUI(beerModel)
+            }
+        }
+    }
+
+    private fun updateUI(beer: List<BeerModel>){
+        adapter = BeerAdapter(beer)
         beerRecyclerView.adapter = adapter
     }
     private inner class BeerViewHolder(view: View)
@@ -64,8 +65,8 @@ class BeerListFragment: Fragment() {
             itemView.setOnClickListener(this)
         }
 
-        fun bind(beer: BeerModel){
-            this.beer = beer
+        fun bind(beer: List<BeerModel>){
+            this.beer = beerModel
             beerLabel.text = this.beer.beerName
         }
 
@@ -75,7 +76,7 @@ class BeerListFragment: Fragment() {
     }
 
 
-    private inner class BeerAdapter(var allBeers: LiveData<List<BeerModel>>)
+    private inner class BeerAdapter(var allBeers: List<BeerModel>)
         :RecyclerView.Adapter<BeerViewHolder>(){
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeerViewHolder {
