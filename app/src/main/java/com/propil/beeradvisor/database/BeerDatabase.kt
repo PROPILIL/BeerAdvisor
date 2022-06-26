@@ -7,5 +7,7 @@ import androidx.room.RoomDatabase
 //@TypeConverters(SomeConverter::class) - you can't use complicated types of data in DB, need converter
 abstract class BeerDatabase : RoomDatabase() {
 
+    //TODO: Man in video added here an instance
+
     abstract fun beerDao(): BeerDao
 }

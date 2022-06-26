@@ -6,5 +6,5 @@ import com.propil.beeradvisor.database.BeerRepository
 class BeerViewModel: ViewModel() {
 
     private val beerRepository =  BeerRepository.get()
-    val beers = beerRepository.getBeers()
+    val beerListLiveData = beerRepository.getBeers()
 }
