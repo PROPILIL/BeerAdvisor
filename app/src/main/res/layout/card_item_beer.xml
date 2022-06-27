@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/beer_image"
+            android:id="@+id/beer_image_card"
             android:layout_width="match_parent"
             android:layout_height="194dp"
             android:src="@drawable/wine_bottle"

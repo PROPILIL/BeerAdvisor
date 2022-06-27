@@ -25,7 +25,7 @@
         app:cardCornerRadius="5dp">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/beer_image"
+            android:id="@+id/beer_image_detail"
             android:layout_width="match_parent"
             android:layout_height="332dp"
             android:src="@drawable/wine_bottle"

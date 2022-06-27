@@ -28,8 +28,8 @@ class BeerListFragment: Fragment() {
     private var adapter: BeerAdapter? = BeerAdapter(emptyList())
 
 
-    private val beerListViewModel: BeerViewModel by lazy{
-        ViewModelProvider(this)[BeerViewModel::class.java]
+    private val beerListViewModel: BeerListViewModel by lazy{
+        ViewModelProvider(this)[BeerListViewModel::class.java]
     }
 
     override fun onAttach(context: Context) {
@@ -50,6 +50,7 @@ class BeerListFragment: Fragment() {
 
         beerRecyclerView = view.findViewById(R.id.beer_recycler_view) as RecyclerView
         beerRecyclerView.layoutManager = GridLayoutManager(context, 2)
+
 
         beerListViewModel.beerListLiveData.observe(viewLifecycleOwner) { beerModel ->
             beerModel?.let {
@@ -78,7 +79,7 @@ class BeerListFragment: Fragment() {
 
         private lateinit var beer: BeerModel
 
-        val beerImage: ImageView = itemView.findViewById(R.id.beer_image)
+        val beerImage: ImageView = itemView.findViewById(R.id.beer_image_card)
         val beerLabel: TextView = itemView.findViewById(R.id.beer_label)
 
         init {

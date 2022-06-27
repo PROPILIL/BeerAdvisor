@@ -24,7 +24,13 @@ class MainActivity : AppCompatActivity(), BeerListFragment.Callbacks {
     }
 
     override fun onBeerSelected(beerId: Long) {
-        Log.d(TAG, "MainActivity.onBeerSelected: $beerId")
+        val fragment = BeerDetailFragment.newInstance(beerId)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+
     }
 
 
