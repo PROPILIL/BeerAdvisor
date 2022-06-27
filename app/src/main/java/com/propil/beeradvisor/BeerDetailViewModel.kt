@@ -12,7 +12,7 @@ class BeerDetailViewModel: ViewModel(){
     private val beerRepository = BeerRepository.get()
     private val beerIdLiveData = MutableLiveData<Long>()
 
-    var beerLiveData: LiveData<BeerModel?> = Transformations.switchMap(beerIdLiveData) {
+    var beerDetailLiveData: LiveData<BeerModel?> = Transformations.switchMap(beerIdLiveData) {
         beerId -> beerRepository.getBeerById(beerId)
     }
 

@@ -13,12 +13,6 @@ data class BeerModel(@PrimaryKey(autoGenerate = true) val id: Long = 0,
                      @ColumnInfo(name = "Description")
                      var beerDescription: String = "",
 
-                     @ColumnInfo(name = "Kind (sort)")
-                     val beerKind: String = "",
-
-                     @ColumnInfo(name = "Mood for beer")
-                     val beerMood: String = "",
-
-                     @ColumnInfo(name = "Color of beer")
-                     val beerColor: String = "")
+                     @ColumnInfo(name = "Color of beer") //TODO: You have to convert the Set to String
+                     val beerTags: Set<String> = emptySet())
 
