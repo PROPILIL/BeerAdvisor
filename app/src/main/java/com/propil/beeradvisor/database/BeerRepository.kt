@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 import java.lang.IllegalStateException
+import java.util.concurrent.Executors
 
 class BeerRepository private constructor(context: Context){
 
@@ -15,11 +16,24 @@ class BeerRepository private constructor(context: Context){
             .build()
 
     private val beerDao = database.beerDao()
+    private val executor = Executors.newSingleThreadExecutor()
 
     //GETTERS
     fun getBeers(): LiveData<List<BeerModel>> = beerDao.getBeers()
 
     fun getBeerById(id: Long): LiveData<BeerModel?> = beerDao.getBeerById(id)
+
+    fun updateBeer(beerModel: BeerModel) {
+        executor.execute {
+            beerDao.updateBeer(beerModel)
+        }
+    }
+
+    fun insertBeer(beerModel: BeerModel) {
+        executor.execute {
+            beerDao.insertBeer(beerModel)
+        }
+    }
 //
 //    fun getBeerByMood(mood: String): BeerModel? = beerDao.getBeerByMood(mood)
 //
