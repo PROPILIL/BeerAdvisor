@@ -13,6 +13,7 @@ data class BeerModel(@PrimaryKey(autoGenerate = true) val id: Long = 0,
                      @ColumnInfo(name = "Description")
                      var beerDescription: String = "",
 
-                     @ColumnInfo(name = "Color of beer") //TODO: You have to convert the Set to String
-                     val beerTags: Set<String> = emptySet())
+                     @ColumnInfo(name = "Color of beer") //TODO: You have to convert the Map to String
+                     val beerTags: Map<String, String> = emptyMap()
+)
 
