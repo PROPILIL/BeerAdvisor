@@ -1,5 +1,5 @@
 # BeerAdvisor (very raw)
-An app for beer advising. It works with SQLite DB, in the future versions of the app integration with existing beer databases will be added.
+An app for beer advising (self-made). It works with SQLite DB, in the future versions of the app integration with existing beer databases will be added.
 
 Some technologies in it:
 
